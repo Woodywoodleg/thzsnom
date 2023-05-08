@@ -17,7 +17,7 @@ from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import matplotlib.font_manager as fm
 import matplotlib.patches as patches
 from scipy.optimize import curve_fit
-from lmfit import Model
+# from lmfit import Model
 
 class ApproachCurveReader:
 	def __init__(self, path_to_data='./'):
