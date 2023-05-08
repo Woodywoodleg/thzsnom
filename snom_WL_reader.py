@@ -637,11 +637,11 @@ class WhitelightScanReader:
 	def change_cd_back(self):
 		os.chdir(self.cd_script) # Change directory back to where the script is located
 
-	def save_fig(self, fig, filename=None, path=None, harmonic=2):
+	def save_fig(self, fig, filename=None, path=None, harmonic=2, add_to_filename=''):
 		if not path:
 			path = './'
 		if not filename:
-			filename = self.files_name.split('WL ')[1] + 'O'+str(harmonic)+'A'
+			filename = self.files_name.split('WL ')[1] + '_' + add_to_filename
 
 		fig.savefig(f'{path}/{filename}')
 
