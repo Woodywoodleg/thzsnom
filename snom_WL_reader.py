@@ -427,11 +427,13 @@ class WhitelightScanReader:
 		WL_map_O = self.WL_optical_amplitudes
 		WL_map_P = self.WL_optical_phases
 
+		name = str(harmonic)
+
 		fig = plt.figure()
 
 		if harmonic == 'O3A/O2A' or harmonic == 'O4A/O3A' or harmonic == 'O5A/O4A':
-			plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[harmonic][0], 
-				np.linspace(WL_map_O[harmonic][0].min(), WL_map_O[harmonic][0].max(), 200), cmap=cmap)
+			plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[name][0], 
+				np.linspace(WL_map_O[name][0].min(), WL_map_O[name][0].max(), 200), cmap=cmap)
 			plt.colorbar(label='Intensity [a.u.]', format='%.2f')
 			plt.title(harmonic)
 			plt.xlabel('X [µm]')
