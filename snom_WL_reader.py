@@ -637,7 +637,7 @@ class WhitelightScanReader:
 	def change_cd_back(self):
 		os.chdir(self.cd_script) # Change directory back to where the script is located
 
-	def save_fig(self, harmonic=2, fig, filename=None, path=None):
+	def save_fig(self, fig, filename=None, path=None, harmonic=2,):
 		if not path:
 			path = './'
 		if not filename:
