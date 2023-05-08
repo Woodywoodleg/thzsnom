@@ -424,8 +424,7 @@ class WhitelightScanReader:
 	def plot_WL_harmonic_norm_optical_amplitude(self, harmonic='O3A/O2A', 
 		cmap='RdBu_r', clim=None, ref=None, loc=[0,0], size=[10,10]):
 
-		WL_map_O = self.WL_optical_amplitudes
-		WL_map_P = self.WL_optical_phases
+		WL_map_O, WL_map_P = self.referenced_signal_to_other_harmonic()
 
 		name = str(harmonic)
 
