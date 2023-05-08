@@ -25,6 +25,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QTabWidget, QVBo
 from multiple_plots_tabs import plotWindow
 from matplotlib.gridspec import GridSpec
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+import cmasher as cmr
 
 
 
