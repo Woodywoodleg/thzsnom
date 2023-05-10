@@ -608,6 +608,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,2)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_amplitudes['M1A'][0], 
 			np.linspace(self.WL_mechanical_amplitudes['M1A'][0].min(), self.WL_mechanical_amplitudes['M1A'][0].max(), 500), cmap='gray')
@@ -617,6 +618,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,3)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_phases['M1P'][0], 
 			np.linspace(self.WL_mechanical_phases['M1P'][0].min(), self.WL_mechanical_phases['M1P'][0].max(), 500), cmap='gray')
@@ -626,6 +628,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,4)
 		plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
 			np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap)
@@ -635,6 +638,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 
 		return fig
 
