@@ -545,7 +545,7 @@ class WhitelightScanReader:
 
 		return fig
 
-	def plot_WL_mechanical_amplitude(self, harmonic=1, cmap='gray'):
+	def plot_WL_mechanical_amplitude(self, harmonic=1, cmap='gray', clim=None):
 
 		i = 'M' + str(harmonic) + 'A'
 
@@ -557,12 +557,13 @@ class WhitelightScanReader:
 		plt.colorbar(label='Z [nm]', format='%.2f')
 		plt.xlabel('X [µm]')
 		plt.ylabel('Y [µm]')
+		plt.clim(clim)
 		plt.gca().invert_yaxis()
 		plt.show()
 
 		return fig
 
-	def plot_WL_mechanical_phase(self, harmonic=1, cmap='gray'):
+	def plot_WL_mechanical_phase(self, harmonic=1, cmap='gray', clim=None):
 
 		i = 'M' + str(harmonic) + 'P'
 
@@ -574,6 +575,7 @@ class WhitelightScanReader:
 		plt.colorbar(label='Angle [a.u.]', format='%.2f')
 		plt.xlabel('X [µm]')
 		plt.ylabel('Y [µm]')
+		plt.clim(clim)
 		plt.gca().invert_yaxis()
 		plt.show()
 
