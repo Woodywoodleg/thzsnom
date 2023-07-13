@@ -25,6 +25,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QTabWidget, QVBo
 from multiple_plots_tabs import plotWindow
 from matplotlib.gridspec import GridSpec
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
 
@@ -216,11 +217,12 @@ class WhitelightScanReader:
 		
 
 		fig = plt.figure()
-		plt.contourf(self.spatial_X, self.spatial_Y, WL_map, np.linspace(WL_map.min(), WL_map.max(), 200), cmap=cmap)
-		plt.gca().invert_yaxis()
-		plt.gca().add_patch(patches.Rectangle((loc[0], loc[1]), size[0], size[1], 
-			linewidth=linewidth, edgecolor=color, facecolor='none'))
-		plt.text((loc[0]-10),(loc[1]-3), title, color=color)
+		ax = plt.axes()
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, WL_map, np.linspace(WL_map.min(), WL_map.max(), 200), cmap=cmap)
+		ax.invert_yaxis()
+		ax.add_patch(patches.Rectangle((loc[0], loc[1]), size[0], size[1], 
+			linewidth=linewidth, edgecolor=color, facecolor='none', zorder=2))
+		ax.text((loc[0]-10),(loc[1]-3), title, color=color, zorder=2)
 		plt.colorbar()
 		plt.show()
 		print('loc_x = %d' % loc[0])
@@ -407,16 +409,25 @@ class WhitelightScanReader:
 			print('No reference.')
 
 		fig = plt.figure()
-		plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
+		ax = plt.axes()
+
+		
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
 			np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap)
-		plt.colorbar(label='Intensity [a.u.]', format='%.2f')
-		plt.title(i)
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.clim(clim)
-		plt.gca().invert_yaxis()
+
+		ax.set_aspect('equal')
+
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Intensity [a.u.]', format='%.2f')
+		ax.set_title(i)
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+		ax.invert_yaxis()
 		plt.tight_layout()
-		plt.gca().set_aspect('equal')
+		
 		plt.show()
 
 		return fig
@@ -424,31 +435,36 @@ class WhitelightScanReader:
 	def plot_WL_harmonic_norm_optical_amplitude(self, harmonic='O3A/O2A', 
 		cmap='RdBu_r', clim=None, ref=None, loc=[0,0], size=[10,10]):
 
-		WL_map_O = self.WL_optical_amplitudes
-		WL_map_P = self.WL_optical_phases
+		WL_map_O, WL_map_P = self.referenced_signal_to_other_harmonic()
 
 		fig = plt.figure()
+		ax = plt.axes()
 
 		if harmonic == 'O3A/O2A' or harmonic == 'O4A/O3A' or harmonic == 'O5A/O4A':
-			plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[harmonic][0], 
+			cm = ax.contourf(self.spatial_X, self.spatial_Y, WL_map_O[harmonic][0], 
 				np.linspace(WL_map_O[harmonic][0].min(), WL_map_O[harmonic][0].max(), 200), cmap=cmap)
-			plt.colorbar(label='Intensity [a.u.]', format='%.2f')
-			plt.title(harmonic)
-			plt.xlabel('X [µm]')
-			plt.ylabel('Y [µm]')
-			plt.clim(clim)
-			plt.gca().invert_yaxis()
+			ax.set_aspect('equal')
+
+			the_divider = make_axes_locatable(ax)
+			cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+			cb = plt.colorbar(cm, cax=cax, label='Intensity [a.u.]', format='%.2f')
+			ax.set_title(harmonic)
+			ax.set_xlabel('X [µm]')
+			ax.set_ylabel('Y [µm]')
+			cm.set_clim(clim)
+			ax.invert_yaxis()
 			plt.tight_layout()
-			plt.gca().set_aspect('equal')
 			plt.show()
 		else:
 			print('Please choose valid harmonic ratio: O3A/O2A, O4A/O3A, or O5A/O4A. Input as a string.')
 
 		return fig
 
-	def plot_WL_AFM_image(self):
+	def plot_WL_AFM_image(self, clim=None):
 	
 		fig = plt.figure()
+		ax = plt.axes()
 
 		if self.Z_mod_present == True:
 			AFM_map = self.WL_Z_mod 
@@ -459,20 +475,29 @@ class WhitelightScanReader:
 			plt.title('AFM profile')
 			print('Raw AFM map - non-corrected.')
 
-		plt.contourf(self.spatial_X, self.spatial_Y, 
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
 			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
-		plt.colorbar(label='Z [nm]', format='%.2f')
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.gca().invert_yaxis()
 
+		ax.set_aspect('equal')
+
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.1f')
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+		ax.invert_yaxis()
+		plt.tight_layout()
+		
 		plt.show()
 
 		return fig
 
-	def plot_WL_AFM_image_with_square(self, loc=[50,50], size=[10,10], color='b'):
+	def plot_WL_AFM_image_with_square(self, loc=[0,0], size=[10,10], color='b', clim=None):
 
 		fig = plt.figure()
+		ax = plt.axes()
 
 		if self.Z_mod_present == True:
 			AFM_map = self.WL_Z_mod 
@@ -483,22 +508,32 @@ class WhitelightScanReader:
 			plt.title('AFM profile')
 			print('Raw AFM map - non-corrected.')
 
-		plt.contourf(self.spatial_X, self.spatial_Y, 
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
 			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
-		plt.colorbar(label='Z [nm]', format='%.2f')
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.gca().add_patch(patches.Rectangle((loc[0], loc[1]), size[0], size[1], linewidth=1, edgecolor=color, facecolor='None'))
-		plt.gca().invert_yaxis()
+
+		ax.add_patch(patches.Rectangle((loc[0], loc[1]), size[0], size[1], linewidth=1, edgecolor=color, facecolor='None', zorder=2))
+
+		ax.set_aspect('equal')
+		
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.1f')
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+
+		plt.tight_layout()
 
 		plt.show()
 
 		return fig
 
 	def plot_WL_AFM_image_with_line(self, x=[5,5], y=[6,6], linewidth=2, color='y', scanner_position_X=None, 
-		scanner_position_Y=None, length=None, rot=0):
+		scanner_position_Y=None, length=None, rot=0, clim=None):
 
 		fig = plt.figure()
+		ax = plt.axes()
 
 		if scanner_position_X and scanner_position_Y and length:
 			rotation = rot*np.pi/180
@@ -533,46 +568,69 @@ class WhitelightScanReader:
 			AFM_map = self.WL_Z_raw
 			plt.title('AFM profile')
 			print('Raw AFM map - non-corrected.')
-		plt.contourf(self.spatial_X, self.spatial_Y, 
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
 			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
-		plt.colorbar(label='Z [nm]', format='%.2f')
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.gca().invert_yaxis()
+		ax.set_aspect('equal')
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.1f')
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+		ax.invert_yaxis()
+
+		plt.tight_layout()
 		plt.show()
 
 		return fig
 
-	def plot_WL_mechanical_amplitude(self, harmonic=1, cmap='gray'):
+	def plot_WL_mechanical_amplitude(self, harmonic=1, cmap='gray', clim=None):
 
 		i = 'M' + str(harmonic) + 'A'
 
 		M_map = self.WL_mechanical_amplitudes
 
 		fig = plt.figure()
-		plt.contourf(self.spatial_X, self.spatial_Y, M_map[i][0], 
+		ax = plt.axes()
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, M_map[i][0], 
 			np.linspace(M_map[i][0].min(), M_map[i][0].max(), 200), cmap=cmap)
-		plt.colorbar(label='Z [nm]', format='%.2f')
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.gca().invert_yaxis()
+		ax.set_aspect('equal')
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.1f')
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+		ax.invert_yaxis()
+
+		plt.tight_layout()
 		plt.show()
 
 		return fig
 
-	def plot_WL_mechanical_phase(self, harmonic=1, cmap='gray'):
+	def plot_WL_mechanical_phase(self, harmonic=1, cmap='gray', clim=None):
 
 		i = 'M' + str(harmonic) + 'P'
 
 		M_map = self.WL_mechanical_phases
 
 		fig = plt.figure()
-		plt.contourf(self.spatial_X, self.spatial_Y, M_map[i][0], 
+		ax = plt.axes()
+		cm = ax.contourf(self.spatial_X, self.spatial_Y, M_map[i][0], 
 			np.linspace(M_map[i][0].min(), M_map[i][0].max(), 200), cmap=cmap)
-		plt.colorbar(label='Angle [a.u.]', format='%.2f')
-		plt.xlabel('X [µm]')
-		plt.ylabel('Y [µm]')
-		plt.gca().invert_yaxis()
+		ax.set_aspect('equal')
+		the_divider = make_axes_locatable(ax)
+		cax = the_divider.append_axes("right", size="5%", pad=0.1)
+
+		cb = plt.colorbar(cm, cax=cax, label='Angle [a.u.]', format='%.1f')
+		ax.set_xlabel('X [µm]')
+		ax.set_ylabel('Y [µm]')
+		cm.set_clim(clim)
+		ax.invert_yaxis()
+
+		plt.tight_layout()
 		plt.show()
 
 		return fig
@@ -670,5 +728,6 @@ if __name__ == "__main__":
 
 	# data = WhitelightScanReader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_Leonid_Ultrafoil\2022-09-14 3291\2022-09-14 191536 THz WL U5_3432_100x100um_200x200px_40ms_new_tip')
 	# data = WhitelightScanReader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_TMD_nanoribbon\2022-02-14 2584\2022-02-14 123657 THz WL WL_MoS2_nano_ribbon_9x9um_250x250px')
-	L2710B_1701_2_WL = WhitelightScanReader(
-		r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Make contrast great again\THz_make_contrast_great_again\2022-11-01 3324\2022-11-01 115351 THz WL L2710B_1701_30x30um_150x150px_50ms_tip_507')
+	# L2710B_1701_2_WL = WhitelightScanReader(
+	# 	r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Make contrast great again\THz_make_contrast_great_again\2022-11-01 3324\2022-11-01 115351 THz WL L2710B_1701_30x30um_150x150px_50ms_tip_507')
+	WL_tip516 = WhitelightScanReader(r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_mtBLG_S4\2023-07-12 3747\2023-07-12 154819 THz WL')
