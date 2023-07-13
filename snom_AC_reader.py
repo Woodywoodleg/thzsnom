@@ -17,7 +17,7 @@ from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import matplotlib.font_manager as fm
 import matplotlib.patches as patches
 from scipy.optimize import curve_fit
-from lmfit import Model
+# from lmfit import Model
 
 class ApproachCurveReader:
 	def __init__(self, path_to_data='./'):
@@ -400,13 +400,6 @@ class ApproachCurveReader:
 	def change_cd_back(self):
 		os.chdir(self.cd_script) # Change directory back to where the script is located
 
-
-
-
-# def exponential_decay(x,a,b,c,d,e,f,g):
-# 	return a * np.exp(-b * x) + c * np.exp(-d * x) + e * np.exp(-f * x) + g
-
-
 if __name__ == "__main__":
 
 	# AC_folder = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\THz_Pt_Capres_TRIM_3nm_Purged_Pt3-1-9 v2\2022-01-21 2515\2022-01-21 113855 THz AC AC_on_Pt'
@@ -415,6 +408,5 @@ if __name__ == "__main__":
 
 	# AC_tip314_Pt = ApproachCurveReader(r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_resolution_test_Pt_Gr\2022-07-10 2968\2022-07-10 134425 THz AC on Pt15 tip3.14\\')
 
-	data = ApproachCurveReader(r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_resolution_test_Pt_Gr\2022-07-10 2969\2022-07-10 140117 THz AC on Pt15 tip3.14 lowered TA 100ms')
-
-
+	# data = ApproachCurveReader(r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_resolution_test_Pt_Gr\2022-07-10 2969\2022-07-10 140117 THz AC on Pt15 tip3.14 lowered TA 100ms')
+	pass

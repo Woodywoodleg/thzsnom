@@ -26,8 +26,7 @@ from multiple_plots_tabs import plotWindow
 from matplotlib.gridspec import GridSpec
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-
-
+import cmasher as cmr
 
 class WhitelightScanReader:
 	def __init__(self, path_to_data='./'):
@@ -436,6 +435,7 @@ class WhitelightScanReader:
 		cmap='RdBu_r', clim=None, ref=None, loc=[0,0], size=[10,10]):
 
 		WL_map_O, WL_map_P = self.referenced_signal_to_other_harmonic()
+		name = str(harmonic)
 
 		fig = plt.figure()
 		ax = plt.axes()
@@ -454,6 +454,7 @@ class WhitelightScanReader:
 			ax.set_ylabel('Y [µm]')
 			cm.set_clim(clim)
 			ax.invert_yaxis()
+
 			plt.tight_layout()
 			plt.show()
 		else:
@@ -606,6 +607,7 @@ class WhitelightScanReader:
 		ax.invert_yaxis()
 
 		plt.tight_layout()
+
 		plt.show()
 
 		return fig
@@ -631,6 +633,7 @@ class WhitelightScanReader:
 		ax.invert_yaxis()
 
 		plt.tight_layout()
+
 		plt.show()
 
 		return fig
@@ -662,6 +665,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,2)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_amplitudes['M1A'][0], 
 			np.linspace(self.WL_mechanical_amplitudes['M1A'][0].min(), self.WL_mechanical_amplitudes['M1A'][0].max(), 500), cmap='gray')
@@ -671,6 +675,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,3)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_phases['M1P'][0], 
 			np.linspace(self.WL_mechanical_phases['M1P'][0].min(), self.WL_mechanical_phases['M1P'][0].max(), 500), cmap='gray')
@@ -680,6 +685,7 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,4)
 		plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
 			np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap)
@@ -689,11 +695,20 @@ class WhitelightScanReader:
 		plt.ylabel('Y [µm]')
 		plt.gca().invert_yaxis()
 		plt.tight_layout()
+		plt.gca().set_aspect('equal')
 
 		return fig
 
 	def change_cd_back(self):
 		os.chdir(self.cd_script) # Change directory back to where the script is located
+
+	def save_fig(self, fig, filename=None, path=None, harmonic=2, add_to_filename=''):
+		if not path:
+			path = './'
+		if not filename:
+			filename = self.files_name.split('WL ')[1] + '_' + add_to_filename
+
+		fig.savefig(f'{path}/{filename}')
 
 
 if __name__ == "__main__":
