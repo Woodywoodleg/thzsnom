@@ -109,7 +109,6 @@ class WhitelightScanReader:
 
 		return self.WL_optical_amplitudes, self.WL_optical_phases
 
-
 	def structure_data_AFM(self):
 
 		scale_image_to_nm = 1e9
