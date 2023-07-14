@@ -476,7 +476,7 @@ class WhitelightScanReader:
 			print('Raw AFM map - non-corrected.')
 
 		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
-			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
+			AFM_map, np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
 
 		ax.set_aspect('equal')
 
@@ -509,7 +509,7 @@ class WhitelightScanReader:
 			print('Raw AFM map - non-corrected.')
 
 		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
-			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
+			AFM_map, np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
 
 		ax.add_patch(patches.Rectangle((loc[0], loc[1]), size[0], size[1], linewidth=1, edgecolor=color, facecolor='None', zorder=2))
 
@@ -569,7 +569,7 @@ class WhitelightScanReader:
 			plt.title('AFM profile')
 			print('Raw AFM map - non-corrected.')
 		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
-			np.flipud(AFM_map), np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
+			AFM_map, np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
 		ax.set_aspect('equal')
 		the_divider = make_axes_locatable(ax)
 		cax = the_divider.append_axes("right", size="5%", pad=0.1)
