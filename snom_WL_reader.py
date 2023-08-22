@@ -476,14 +476,14 @@ class WhitelightScanReader:
 			print('Raw AFM map - non-corrected.')
 
 		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
-			AFM_map, np.linspace(AFM_map.values.min()*1e-9, AFM_map.values.max()*1e-9, 500), cmap='gray')
+			AFM_map, np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
 
 		ax.set_aspect('equal')
 
 		the_divider = make_axes_locatable(ax)
 		cax = the_divider.append_axes("right", size="5%", pad=0.1)
 
-		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.1f')
+		cb = plt.colorbar(cm, cax=cax, label='Z [nm]', format='%.2f')
 		ax.set_xlabel('X [µm]')
 		ax.set_ylabel('Y [µm]')
 		cm.set_clim(clim)
