@@ -566,6 +566,7 @@ class WhitelightScanReader:
 				plt.plot([x_pixel[0], y_pixel[0]], [x_pixel[1], y_pixel[1]], color=color, linewidth=linewidth)
 
 
+
 		if self.Z_mod_present == True:
 			AFM_map = self.WL_Z_mod 
 			plt.title('AFM profile - C')
