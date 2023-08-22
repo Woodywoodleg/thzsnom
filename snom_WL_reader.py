@@ -530,7 +530,7 @@ class WhitelightScanReader:
 		return fig
 
 	def plot_WL_AFM_image_with_line(self, x=[5,5], y=[6,6], linewidth=2, color='y', scanner_position_X=None, 
-		scanner_position_Y=None, length=None, rot=0, clim=None):
+		scanner_position_Y=None, length=None, rot=0, clim=None, in_pixel=False):
 
 		fig = plt.figure()
 		ax = plt.axes()
@@ -557,7 +557,13 @@ class WhitelightScanReader:
 			y = np.linspace(y_start, y_fin, 100)
 			plt.plot(x, y, color=color, linewidth=linewidth)
 		else:
-			plt.plot([x[0], y[0]], [x[1], y[1]], color=color, linewidth=linewidth)
+			if not in_pixel:
+				plt.plot([x[0], y[0]], [x[1], y[1]], color=color, linewidth=linewidth)
+			else:
+				x_pixel = [(x[0]/self._number_pixels_X)*max(self.spatial_X), (x[1]/self._number_pixels_X)*max(self.spatial_X)]
+				y_pixel = [(y[0]/self._number_pixels_Y)*max(self.spatial_Y), (Y[1]/self._number_pixels_Y)*max(self.spatial_Y)]
+
+				plt.plot([x_pixel[0], y_pixel[0]], [x_pixel[1], y_pixel[1]], color=color, linewidth=linewidth)
 
 
 		if self.Z_mod_present == True:
