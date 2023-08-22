@@ -561,7 +561,7 @@ class WhitelightScanReader:
 				plt.plot([x[0], y[0]], [x[1], y[1]], color=color, linewidth=linewidth)
 			else:
 				x_pixel = [(x[0]/self._number_pixels_X)*max(self.spatial_X), (x[1]/self._number_pixels_X)*max(self.spatial_X)]
-				y_pixel = [(y[0]/self._number_pixels_Y)*max(self.spatial_Y), (Y[1]/self._number_pixels_Y)*max(self.spatial_Y)]
+				y_pixel = [(y[0]/self._number_pixels_Y)*max(self.spatial_Y), (y[1]/self._number_pixels_Y)*max(self.spatial_Y)]
 
 				plt.plot([x_pixel[0], y_pixel[0]], [x_pixel[1], y_pixel[1]], color=color, linewidth=linewidth)
 
