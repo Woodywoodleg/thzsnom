@@ -476,7 +476,7 @@ class WhitelightScanReader:
 			print('Raw AFM map - non-corrected.')
 
 		cm = ax.contourf(self.spatial_X, self.spatial_Y, 
-			AFM_map, np.linspace(AFM_map.values.min(), AFM_map.values.max(), 500), cmap='gray')
+			AFM_map, np.linspace(AFM_map.values.min()*1e-9, AFM_map.values.max()*1e-9, 500), cmap='gray')
 
 		ax.set_aspect('equal')
 
