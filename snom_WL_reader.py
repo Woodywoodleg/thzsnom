@@ -555,7 +555,7 @@ class WhitelightScanReader:
 
 			x = np.linspace(x_start, x_fin, 100)
 			y = np.linspace(y_start, y_fin, 100)
-			plt.plot(x, y, color=color, linewidth=linewidth)
+			plt.plot(x, y, color=color, linewidth=linewidth, solid_capstyle='butt')
 		else:
 			if not in_pixel:
 				plt.plot([x[0], y[0]], [x[1], y[1]], color=color, linewidth=linewidth)
@@ -563,7 +563,7 @@ class WhitelightScanReader:
 				x_pixel = [(x[0]/self._number_pixels_X)*max(self.spatial_X), (x[1]/self._number_pixels_X)*max(self.spatial_X)]
 				y_pixel = [(y[0]/self._number_pixels_Y)*max(self.spatial_Y), (y[1]/self._number_pixels_Y)*max(self.spatial_Y)]
 
-				plt.plot([x_pixel[0], y_pixel[0]], [x_pixel[1], y_pixel[1]], color=color, linewidth=linewidth)
+				plt.plot([x_pixel[0], y_pixel[0]], [x_pixel[1], y_pixel[1]], color=color, linewidth=linewidth, solid_capstyle='butt')
 
 
 
