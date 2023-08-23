@@ -99,7 +99,7 @@ class WhitelightScanReader:
 			l = 'O' + str(i) + 'P'
 
 			temp_A = pd.read_csv(optical_amplitudes[i], sep='\t', comment='#', header=None)
-			temp_P = pd.read_csv(optical_amplitudes[i], sep='\t', comment='#', header=None)
+			temp_P = pd.read_csv(optical_phases[i], sep='\t', comment='#', header=None)
 
 			temp_A.drop(temp_A[temp_A.columns[temp_A.isna().any()]], axis=1, inplace=True)
 			temp_P.drop(temp_P[temp_P.columns[temp_P.isna().any()]], axis=1, inplace=True)
