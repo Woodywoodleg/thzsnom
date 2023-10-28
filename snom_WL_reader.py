@@ -272,9 +272,9 @@ class WhitelightScanReader:
 			k = 'O' + str(i) + 'A'
 			l = 'O' + str(i) + 'P'
 
-			area_average_amplitude[k] = self.WL_optical_amplitudes[k][0][loc[1]:(loc[1]+size[1]), loc[0]:(loc[0]+size[0])].mean()
+			area_average_amplitude[k] = [self.WL_optical_amplitudes[k][0][loc[1]:(loc[1]+size[1]), loc[0]:(loc[0]+size[0])].mean()]
 
-			area_average_phase[l] = self.WL_optical_phases[l][0][loc[1]:(loc[1]+size[1]), loc[0]:(loc[0]+size[0])].mean()
+			area_average_phase[l] = [self.WL_optical_phases[l][0][loc[1]:(loc[1]+size[1]), loc[0]:(loc[0]+size[0])].mean()]
 				
 		return area_average_amplitude, area_average_phase
 
