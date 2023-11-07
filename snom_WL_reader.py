@@ -665,7 +665,7 @@ class WhitelightScanReader:
 		plt.subplot(2,2,1)
 		if pcolormesh:
 			plt.pcolormesh(self.spatial_X, self.spatial_Y, self.WL_Z_mod, 
-				vmin=self.WL_Z_mod.values.min(), vmax=self.WL_Z_mod.values.max(), cmap='gray', rasterized=rasterized, shadig='auto')
+				vmin=self.WL_Z_mod.values.min(), vmax=self.WL_Z_mod.values.max(), cmap='gray', rasterized=rasterized, shading='auto')
 		else:
 			plt.contourf(self.spatial_X, self.spatial_Y, self.WL_Z_mod, 
 				np.linspace(self.WL_Z_mod.values.min(), self.WL_Z_mod.values.max(), 500), cmap='gray', rasterized=rasterized)
@@ -679,7 +679,7 @@ class WhitelightScanReader:
 		plt.subplot(2,2,2)
 		if pcolormesh:
 			plt.pcolormesh(self.spatial_X, self.spatial_Y, self.WL_mechanical_amplitudes['M1A'][0], 
-				vmin=self.WL_mechanical_amplitudes['M1A'][0].min(), vmax=self.WL_mechanical_amplitudes['M1A'][0].max(), cmap='gray', rasterized=rasterized, shadig='auto')
+				vmin=self.WL_mechanical_amplitudes['M1A'][0].min(), vmax=self.WL_mechanical_amplitudes['M1A'][0].max(), cmap='gray', rasterized=rasterized, shading='auto')
 		else:
 			plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_amplitudes['M1A'][0], 
 				np.linspace(self.WL_mechanical_amplitudes['M1A'][0].min(), self.WL_mechanical_amplitudes['M1A'][0].max(), 500), cmap='gray', rasterized=rasterized)
@@ -693,7 +693,7 @@ class WhitelightScanReader:
 		plt.subplot(2,2,3)
 		if pcolormesh:
 			plt.pcolormesh(self.spatial_X, self.spatial_Y, self.WL_mechanical_phases['M1P'][0], 
-				vmin=self.WL_mechanical_phases['M1P'][0].min(), vmax=self.WL_mechanical_phases['M1P'][0].max(), cmap='gray', rasterized=rasterized, shadig='auto')
+				vmin=self.WL_mechanical_phases['M1P'][0].min(), vmax=self.WL_mechanical_phases['M1P'][0].max(), cmap='gray', rasterized=rasterized, shading='auto')
 		else:
 			plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_phases['M1P'][0], 
 				np.linspace(self.WL_mechanical_phases['M1P'][0].min(), self.WL_mechanical_phases['M1P'][0].max(), 500), cmap='gray', rasterized=rasterized)
@@ -707,7 +707,7 @@ class WhitelightScanReader:
 		plt.subplot(2,2,4)
 		if pcolormesh:
 			plt.pcolormesh(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
-				vmin=WL_map_O[i][0].min(), vmax=WL_map_O[i][0].max(), cmap='gray', rasterized=rasterized, shadig='auto')
+				vmin=WL_map_O[i][0].min(), vmax=WL_map_O[i][0].max(), cmap='gray', rasterized=rasterized, shading='auto')
 		else:
 			plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
 				np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap, rasterized=rasterized)
