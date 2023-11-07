@@ -720,6 +720,7 @@ class WhitelightScanReader:
 
 		return fig
 
+
 	def change_cd_back(self):
 		os.chdir(self.cd_script) # Change directory back to where the script is located
 
