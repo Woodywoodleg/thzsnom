@@ -644,7 +644,7 @@ class WhitelightScanReader:
 
 		return fig
 
-	def plot_neaspec_style(self, ref=None, cmap='hot', harmonic=2, figsize=(12,10)):
+	def plot_neaspec_style(self, ref=None, cmap='hot', harmonic=2, figsize=(12,10), rasterized=True):
 
 		i = 'O' + str(harmonic) + 'A'
 
@@ -664,7 +664,7 @@ class WhitelightScanReader:
 		fig = plt.figure(figsize=figsize)
 		plt.subplot(2,2,1)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_Z_mod, 
-			np.linspace(self.WL_Z_mod.values.min(), self.WL_Z_mod.values.max(), 500), cmap='gray')
+			np.linspace(self.WL_Z_mod.values.min(), self.WL_Z_mod.values.max(), 500), cmap='gray', rasterized=rasterized)
 		plt.colorbar(label='Z [nm]', format='%.1f')
 		plt.title('AFM')
 		plt.xlabel('X [µm]')
@@ -674,7 +674,7 @@ class WhitelightScanReader:
 		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,2)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_amplitudes['M1A'][0], 
-			np.linspace(self.WL_mechanical_amplitudes['M1A'][0].min(), self.WL_mechanical_amplitudes['M1A'][0].max(), 500), cmap='gray')
+			np.linspace(self.WL_mechanical_amplitudes['M1A'][0].min(), self.WL_mechanical_amplitudes['M1A'][0].max(), 500), cmap='gray', rasterized=rasterized)
 		plt.colorbar(label='Amplitude [nm]', format='%.1f')
 		plt.title('M1A')
 		plt.xlabel('X [µm]')
@@ -684,7 +684,7 @@ class WhitelightScanReader:
 		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,3)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_mechanical_phases['M1P'][0], 
-			np.linspace(self.WL_mechanical_phases['M1P'][0].min(), self.WL_mechanical_phases['M1P'][0].max(), 500), cmap='gray')
+			np.linspace(self.WL_mechanical_phases['M1P'][0].min(), self.WL_mechanical_phases['M1P'][0].max(), 500), cmap='gray', rasterized=rasterized)
 		plt.colorbar(label='Angle [a.u.]', format='%.2f')
 		plt.title('M1P')
 		plt.xlabel('X [µm]')
@@ -694,7 +694,7 @@ class WhitelightScanReader:
 		plt.gca().set_aspect('equal')
 		plt.subplot(2,2,4)
 		plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
-			np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap)
+			np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap, rasterized=rasterized)
 		plt.colorbar(label='Amplitude Ratio', format='%.2f')
 		plt.title('O2A')
 		plt.xlabel('X [µm]')
