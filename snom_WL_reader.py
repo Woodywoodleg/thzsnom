@@ -706,7 +706,7 @@ class WhitelightScanReader:
 		plt.subplot(2,2,4)
 		if pcolormesh:
 			plt.pcolormesh(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
-				vmin=WL_map_O[i][0].min(), vmax=WL_map_O[i][0].max(), cmap='gray', rasterized=rasterized, shading='auto')
+				vmin=WL_map_O[i][0].min(), vmax=WL_map_O[i][0].max(), cmap='hot', rasterized=rasterized, shading='auto')
 		else:
 			plt.contourf(self.spatial_X, self.spatial_Y, WL_map_O[i][0], 
 				np.linspace(WL_map_O[i][0].min(), WL_map_O[i][0].max(), 200), cmap=cmap, rasterized=rasterized)
