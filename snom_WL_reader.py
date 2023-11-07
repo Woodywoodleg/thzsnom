@@ -660,7 +660,6 @@ class WhitelightScanReader:
 			WL_map_P = self.WL_optical_phases
 			print('No reference.')
 
-
 		fig = plt.figure(figsize=figsize)
 		plt.subplot(2,2,1)
 		if pcolormesh:
