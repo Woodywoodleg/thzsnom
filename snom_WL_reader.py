@@ -644,7 +644,7 @@ class WhitelightScanReader:
 
 		return fig
 
-	def plot_neaspec_style(self, ref=None, cmap='hot', harmonic=2):
+	def plot_neaspec_style(self, ref=None, cmap='hot', harmonic=2, figsize=(12,10)):
 
 		i = 'O' + str(harmonic) + 'A'
 
@@ -661,7 +661,7 @@ class WhitelightScanReader:
 			print('No reference.')
 
 
-		fig = plt.figure(figsize=(12,10 ))
+		fig = plt.figure(figsize=figsize)
 		plt.subplot(2,2,1)
 		plt.contourf(self.spatial_X, self.spatial_Y, self.WL_Z_mod, 
 			np.linspace(self.WL_Z_mod.values.min(), self.WL_Z_mod.values.max(), 500), cmap='gray')
