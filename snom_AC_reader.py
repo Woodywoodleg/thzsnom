@@ -78,10 +78,10 @@ class ApproachCurveReader:
 
 		if self.AC_raw['M1A'].idxmax() < len(self.AC_raw['M1A'])/3:
 			for i in range(1,6):
-				self.AC['O'+str(i)+'A'] = self.AC_raw['O'+str(i)+'A'][(self.AC_raw['M1A'].idxmax()+3):]
-				self.AC['O'+str(i)+'P'] = self.AC_raw['O'+str(i)+'P'][(self.AC_raw['M1A'].idxmax()+3):]
+				self.AC['O'+str(i)+'A'] = self.AC_raw['O'+str(i)+'A'][(self.AC_raw['M1A'].idxmax()+4):]
+				self.AC['O'+str(i)+'P'] = self.AC_raw['O'+str(i)+'P'][(self.AC_raw['M1A'].idxmax()+4):]
 			
-			self.AC['Z'] = self.AC_raw['Z'][(self.AC_raw['M1A'].idxmax()+3):] - self.AC_raw['Z'][(self.AC_raw['M1A'].idxmax()+3)]
+			self.AC['Z'] = self.AC_raw['Z'][(self.AC_raw['M1A'].idxmax()+4):] - self.AC_raw['Z'][(self.AC_raw['M1A'].idxmax()+4)]
 			print('Used max(M1A) for data shift. test')
 		else:
 			for i in range(1,6):
