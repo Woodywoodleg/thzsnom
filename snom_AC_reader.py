@@ -62,6 +62,7 @@ class ApproachCurveReader:
 				key, val = s.split(':')
 				self.header[key] = list(filter(None, val.split('\t')))
 
+
 	def scan_information(self):
 		self._number_pixels_X = int(self.header['Pixel Area (X, Y, Z)'][1])
 		self._number_pixels_Y = int(self.header['Pixel Area (X, Y, Z)'][2])
