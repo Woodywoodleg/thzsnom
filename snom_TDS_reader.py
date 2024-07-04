@@ -298,13 +298,13 @@ class line(NeaspecDataReader):
 
 			signal_amplitude_norm = self.signal_amplitude[i][0] / self.signal_amplitude[i][0].max(axis=1, keepdims=True)
 
-			peaks_list = []
+			self.peaks_list = []
 
 			for row in signal_amplitude_norm:
 				peaks, _ = find_peaks(signal_amplitude, height=0.85)
 				peaks_list.append(peaks[-1])
 
-			print(peaks)
+			print(self.peaks_list)
 
 			self.peak_position = np.argmax(self.signal_amplitude[i][0], axis=1)
 			self.phase_offset = self.signal_phase[j][0][np.arange(self.peak_position.size), self.peak_position]
