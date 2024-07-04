@@ -306,11 +306,8 @@ class line(NeaspecDataReader):
 
 			self.peak_position = np.argmax(self.signal_amplitude[i][0], axis=1)
 
-			print(self.peak_position)
-			print(self.peaks_list)
-			
-
-			self.phase_offset = self.signal_phase[j][0][np.arange(self.peak_position.size), self.peak_position]
+			# self.phase_offset = self.signal_phase[j][0][np.arange(self.peak_position.size), self.peak_position]
+			self.phase_offset = self.signal_phase[j][0][np.arange(self.peak_position.size), self.peaks_list]
 			self.phase_offset_stacked = np.expand_dims(self.phase_offset, axis=1)
 
 			self.efield_timedomain[name] = [np.fliplr(self.signal_amplitude[i][0] * np.exp(-1j * (self.signal_phase[j][0] - self.phase_offset_stacked)))]
