@@ -301,7 +301,7 @@ class line(NeaspecDataReader):
 			self.peaks_list = []
 
 			for row in signal_amplitude_norm:
-				peaks, _ = find_peaks(signal_amplitude, height=0.85)
+				peaks, _ = find_peaks(signal_amplitude_norm, height=0.85)
 				peaks_list.append(peaks[-1])
 
 			print(self.peaks_list)
