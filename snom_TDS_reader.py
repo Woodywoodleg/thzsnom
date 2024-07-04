@@ -302,7 +302,7 @@ class line(NeaspecDataReader):
 
 			for row in signal_amplitude_norm:
 				peaks, _ = find_peaks(row, height=0.85)
-				peaks_list.append(peaks[-1])
+				self.peaks_list.append(peaks[-1])
 
 			self.peak_position = np.argmax(self.signal_amplitude[i][0], axis=1)
 
