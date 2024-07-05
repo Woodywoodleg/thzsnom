@@ -403,11 +403,4 @@ class ApproachCurveReader:
 
 if __name__ == "__main__":
 
-	# AC_folder = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\THz_Pt_Capres_TRIM_3nm_Purged_Pt3-1-9 v2\2022-01-21 2515\2022-01-21 113855 THz AC AC_on_Pt'
-
-	# data_AC = ApproachCurveReader(path_to_data=AC_folder)
-
-	# AC_tip314_Pt = ApproachCurveReader(r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_resolution_test_Pt_Gr\2022-07-10 2968\2022-07-10 134425 THz AC on Pt15 tip3.14\\')
-
-	# data = ApproachCurveReader(r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_resolution_test_Pt_Gr\2022-07-10 2969\2022-07-10 140117 THz AC on Pt15 tip3.14 lowered TA 100ms')
 	pass

@@ -762,18 +762,5 @@ def TDSreader(path_to_data='./'):
 
 if __name__ == "__main__":
 
-	path_data = r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\THz_Pt_Capres_TRIM_5nm_Purged_Pt5-3-8 v2\2022-01-19 2505\2022-01-19 182218 THz S surface_scan_100x100um_35x35px_40ms'
-	# # data = NeaspecDataReader(path_to_data=path_data)
-
-	# path_data = r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\THz_Pt_Capres_TRIM_5nm_Purged_Pt5-3-8 v2\2022-01-19 2505\2022-01-19 210021 THz S linescan_45um_300px_40ms_3avg'
-	data = TDSreader(path_to_data=path_data)
-
-	path_data_p = r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\THz_Pt_Capres_TRIM_5nm_Purged_Pt5-3-8 v2\2022-01-19 2506\2022-01-19 225242 THz S pointscan_on_Pt_40ms_10avg'
-	data2 = TDSreader(path_to_data=path_data_p)
-
-	# pat = r'C:\Users\hebla\Desktop'
-	# test = NeaspecDataReader(path_to_data=pat)
-
-	paths = r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_TMD_nanoribbon\2022-02-14 2584\2022-02-14 141918 THz S line_TDS_MoS2_nano_ribbon_1.64um_160px_5avg'
-	data3 = TDSreader(path_to_data=paths)
+	pass
 

@@ -735,36 +735,4 @@ class WhitelightScanReader:
 
 if __name__ == "__main__":
 
-
-	# folder_5nm = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\v3\THz_Pt_Capres_5nm_Pt5-3-8 v3\2022-06-29 2930\2022-06-29 184149 THz WL 100x100um_150x150px_40ms\\'
-	# folder_15nm = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\v3\THz_Pt_Capres_15nm_Pt15-5-7 v3\2022-06-29 2919\2022-06-29 120913 THz WL 100x100um_150x150px_40ms\\'
-	# folder_3nm = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\v3\THz_Pt_Capres_3nm_Pt3-1-9 v3\2022-06-29 2934\2022-06-29 215953 THz WL 100x100um_150x150px_40ms\\'
-	# folder_10nm = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Pt_Capres_TRIM\v3\THz_Pt_Capres_10nm_Pt10-4-9 v3\2022-06-29 2924\2022-06-29 152701 THz WL 100x100um_150x150px_40ms\\'
-
-	# data5 = WhitelightScanReader(path_to_data=folder_5nm)
-	# data15 = WhitelightScanReader(path_to_data=folder_15nm)
-	# data3 = WhitelightScanReader(path_to_data=folder_3nm)
-	# data10 = WhitelightScanReader(path_to_data=folder_10nm)
-
-
-	# WL5926 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-09 2480\2021-12-09 141825 THz WL Gr_L1511B_5926_WL_10x10um_100x100px\\')
-	# WL8026_10x10um = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-09 2481\2021-12-09 143512 THz WL Gr_L1511B_8026_WL_10x10um_100x100px\\')
-	# WL8026_5x5um = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-09 2481\2021-12-09 144932 THz WL Gr_L1511B_8026_WL_5x5um_100x100px\\')
-	# WL8026_3x3 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-09 2481\2021-12-09 151002 THz WL Gr_L1511B_8026_WL_3x3um_100x100px\\')
-	# WL6027_1 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-16 2482\2021-12-16 105604 THz WL Gr_L1511B_6027_WL_10x10um_100x100px\\')
-	# WL6027_2 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-16 2483\2021-12-16 120152 THz WL Gr_L1511B_6027_WL_10x10um_150x150px\\')
-	# WL7432 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L1511B_Leonid\2021-12-16 2484\2021-12-16 134124 THz WL Gr_L1511B_7432_WL_10x10um_150x150px\\')
-
-	# WL3780 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L0802_Leonid\2022-02-11 2582 L0802D_3780\2022-02-11 131750 THz WL L0802D_3780_50x50um_100x100px\\')
-	# WL4504 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Gr_L0802_Leonid\2022-02-09 2552 L0802A_4504\2022-02-09 144739 THz WL L0802A_4504_50x50um_200x200px\\')
-
-	# data = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_TMD_nanoribbon\2022-02-14 2584\2022-02-14 123657 THz WL WL_MoS2_nano_ribbon_9x9um_250x250px\\')
-
-	# data = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Module_CVD_monolayer_Graphene_Nurbek\2021-10-20 2424\2021-10-20 171022 THz WL Scan at hole edge near center of sample again')
-	# data2 = WhitelightScanReader(path_to_data=r'C:\Users\hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_Module_CVD_monolayer_Graphene_Nurbek\2021-10-20 2424\2021-10-20 165918 THz WL Scan at hole edge near center of sample')
-
-	# data = WhitelightScanReader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_Leonid_Ultrafoil\2022-09-14 3291\2022-09-14 191536 THz WL U5_3432_100x100um_200x200px_40ms_new_tip')
-	# data = WhitelightScanReader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_TMD_nanoribbon\2022-02-14 2584\2022-02-14 123657 THz WL WL_MoS2_nano_ribbon_9x9um_250x250px')
-	# L2710B_1701_2_WL = WhitelightScanReader(
-	# 	r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\Make contrast great again\THz_make_contrast_great_again\2022-11-01 3324\2022-11-01 115351 THz WL L2710B_1701_30x30um_150x150px_50ms_tip_507')
-	WL_tip516 = WhitelightScanReader(r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_mtBLG_S4\2023-07-12 3747\2023-07-12 154819 THz WL')
+	pass

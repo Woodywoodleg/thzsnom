@@ -31,7 +31,7 @@ class ImageLoader:
 
 # Example usage
 if __name__ == "__main__":
-    folder_path = r'C:\Users\Hebla\OneDrive\DTU Fotonik\Ph.d\Data\THz_NanoFrazor_v2\2023-08-10 3787'
+    folder_path = r'C:\Users\name\data'
     loader = ImageLoader(folder_path)
     
     loaded_images = loader.load_images()
