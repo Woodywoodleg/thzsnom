@@ -6,6 +6,7 @@ class ImageLoader:
     def __init__(self, folder_path):
         self.folder_path = folder_path
         self.image_list = self.load_images()
+        self.images = self.load_images()
     
     def load_images(self):
         image_list = []
