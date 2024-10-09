@@ -3,6 +3,15 @@ import os
 import matplotlib.pyplot as plt
 
 class ImageLoader:
+    '''
+    Module for loading images (.png, .jpg, .jpeg, .gif, .bmp) from a given folder.
+
+    Example:
+        folder_path = r'C:\Users\name\data'
+        loader = ImageLoader(folder_path)
+
+        loader.plot_images(loader.images)
+    '''
     def __init__(self, folder_path):
         self.folder_path = folder_path
         self.image_list = self.load_images()
@@ -37,10 +46,6 @@ class ImageLoader:
 
 # Example usage
 if __name__ == "__main__":
-    folder_path = r'C:\Users\name\data'
-    loader = ImageLoader(folder_path)
-    
-    loaded_images = loader.load_images()
-    loader.plot_images(loaded_images)
+    pass
 
 
