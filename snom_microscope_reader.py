@@ -44,7 +44,6 @@ class ImageLoader:
         plt.tight_layout()
         plt.show()
 
-# Example usage
 if __name__ == "__main__":
     pass
 
