@@ -18,7 +18,6 @@ class ImageLoader:
         return image_list
 
     def plot_images(self, images):
-
         if type(images) == list:
             num_images = len(images)
             plt.figure(figsize=(10, 6))
