@@ -30,7 +30,7 @@ class ImageLoader:
                 plt.axis('off')
 
         else:
-            plt.imshow(image)
+            plt.imshow(images)
             plt.axis('off')
         
         plt.tight_layout()
