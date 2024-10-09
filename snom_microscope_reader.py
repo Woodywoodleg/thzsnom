@@ -18,13 +18,19 @@ class ImageLoader:
         return image_list
 
     def plot_images(self, images):
-        num_images = len(images)
-        plt.figure(figsize=(10, 6))
+
+        if type(images) == list:
+            num_images = len(images)
+            plt.figure(figsize=(10, 6))
         
-        for idx, image in enumerate(images):
-            plt.subplot(1, num_images, idx + 1)
+            for idx, image in enumerate(images):
+                plt.subplot(1, num_images, idx + 1)
+                plt.imshow(image)
+                plt.title(f"Image {idx + 1}")
+                plt.axis('off')
+
+        else:
             plt.imshow(image)
-            plt.title(f"Image {idx + 1}")
             plt.axis('off')
         
         plt.tight_layout()
