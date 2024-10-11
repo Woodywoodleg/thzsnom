@@ -2,12 +2,12 @@ from PIL import Image
 import os
 import matplotlib.pyplot as plt
 
-class ImageLoader:
+class ImageLoader():
     '''
     Module for loading images (.png, .jpg, .jpeg, .gif, .bmp) from a given folder.
 
     Example:
-        folder_path = r'C:\Users\name\data'
+        folder_path = r'C:\\Users\\name\\data'
         loader = ImageLoader(folder_path)
 
         loader.plot_images(loader.images)
