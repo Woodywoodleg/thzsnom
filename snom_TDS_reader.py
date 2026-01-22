@@ -768,5 +768,5 @@ def TDSreader(path_to_data='./'):
 
 if __name__ == "__main__":
 
-	tds = TDSreader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_Module_Gold_Platelet\2021-07-07 2326\2021-07-07 115454 THz S')
+	pass
 
