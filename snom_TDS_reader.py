@@ -66,7 +66,7 @@ class NeaspecDataReader():
 		return self.raw_interferograms
 
 	def header_info(self):
-		with open(self.path_to_data + [s for s in self.all_files if (self.files_name + '.txt') in s][0], 'r') as full_file: # Open the full file with the header
+		with open(self.path_to_data + [s for s in self.all_files if (self.files_name + '.txt') in s][0], 'r', encoding="utf-8", errors="strict") as full_file: # Open the full file with the header
 			raw_header = [] 
 			for s in full_file:
 				if s.startswith("#"): 
@@ -75,9 +75,15 @@ class NeaspecDataReader():
 					break # Stop when it doesn't start with "#"
 
 		# Cleaning up header
-		cleaned_header = [s.replace('Â\xa0', '') for s in raw_header] # Remove part related to win32
-		cleaned_header = [s.replace('Â', '') for s in cleaned_header]
-		cleaned_header = [s.replace('\n', '') for s in cleaned_header] # Remove newline command
+		cleaned_header = []
+		for s in raw_header:
+			s = s.replace("\ufeff", "")   # BOM
+			s = s.replace("\u00a0", "")   # NBSP
+			s = s.replace("\n", "")
+			cleaned_header.append(s)
+		# cleaned_header = [s.replace('Â\xa0', '') for s in raw_header] # Remove part related to win32
+		# cleaned_header = [s.replace('Â', '') for s in cleaned_header]
+		# cleaned_header = [s.replace('\n', '') for s in cleaned_header] # Remove newline command
 
 		self.header = dict() # Put the header into a dictionary
 		for s in cleaned_header:
@@ -762,5 +768,5 @@ def TDSreader(path_to_data='./'):
 
 if __name__ == "__main__":
 
-	pass
+	tds = TDSreader(r'C:\Users\h_las\OneDrive\DTU Fotonik\Ph.d\Data\THz_Module_Gold_Platelet\2021-07-07 2326\2021-07-07 115454 THz S')
 
